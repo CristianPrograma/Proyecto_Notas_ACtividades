@@ -56,6 +56,8 @@ public class Grade extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jComboBox4 = new javax.swing.JComboBox<>();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 37, -1, -1));
 
@@ -154,7 +156,7 @@ public class Grade extends javax.swing.JInternalFrame {
 
     public void cargarCursos() {
         try {
-            ResultSet rs = cone.consultar("SELECT tsc.ID_COURSES, NAME_COURSES FROM  teachersxsubjectsxcourses as tsc INNER JOIN COURSES c ON c.ID_COURSES = tsc.ID_COURSES");
+            ResultSet rs = cone.consultar(""+idUser);
             while (rs.next()) {
                 jComboBox1.addItem(rs.getString("tsc.ID_COURSES") + " - " + rs.getString("NAME_COURSES"));
             }

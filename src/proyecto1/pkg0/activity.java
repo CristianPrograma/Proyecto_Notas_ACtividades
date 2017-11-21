@@ -27,10 +27,7 @@ public class activity extends javax.swing.JInternalFrame {
     public activity() {
         initComponents();
         cone = new conexion();
-        id();
-        nameTeacher();
-        cargarLogros();
-        cargarCursos();
+        consult("");
         
         }
 
@@ -54,11 +51,11 @@ public class activity extends javax.swing.JInternalFrame {
         lbl_tea = new javax.swing.JLabel();
         lbl_nam_tea = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        cmb_id_arc = new javax.swing.JComboBox<>();
+        cmb_id_ach = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         lbl_id_act = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cmb_id_cur = new javax.swing.JComboBox<>();
+        cmb_id_cou = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,6 +64,9 @@ public class activity extends javax.swing.JInternalFrame {
         lbl_qua_act = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lbl_sum_per = new javax.swing.JLabel();
+        lbl_sym = new javax.swing.JLabel();
+        lbl_fil = new javax.swing.JLabel();
+        txt_fil = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -90,7 +90,7 @@ public class activity extends javax.swing.JInternalFrame {
                 btn_addActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 627, 81, 28));
+        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 81, 28));
 
         tbl_act.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,19 +105,19 @@ public class activity extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tbl_act);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 682, 547, 116));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, 547, 116));
 
         txt_des.setColumns(20);
         txt_des.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
         txt_des.setRows(5);
         jScrollPane2.setViewportView(txt_des);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 478, 331, 101));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 331, 101));
 
         jLabel6.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 153));
         jLabel6.setText("Descripcion");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 432, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
         lbl_tea.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         lbl_tea.setForeground(new java.awt.Color(0, 102, 153));
@@ -131,22 +131,22 @@ public class activity extends javax.swing.JInternalFrame {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmb_id_arc.addItemListener(new java.awt.event.ItemListener() {
+        cmb_id_ach.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmb_id_arcItemStateChanged(evt);
+                cmb_id_achItemStateChanged(evt);
             }
         });
-        cmb_id_arc.addActionListener(new java.awt.event.ActionListener() {
+        cmb_id_ach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_id_arcActionPerformed(evt);
+                cmb_id_achActionPerformed(evt);
             }
         });
-        jPanel2.add(cmb_id_arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 205, 169, 28));
+        jPanel2.add(cmb_id_ach, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 140, 28));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
         jLabel1.setText("Nuevo ID");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 25, 137, 31));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 137, 31));
 
         lbl_id_act.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
         jPanel2.add(lbl_id_act, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 22, 101, 31));
@@ -154,26 +154,26 @@ public class activity extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 102, 153));
         jLabel2.setText("ID logro");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 203, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
-        cmb_id_cur.addItemListener(new java.awt.event.ItemListener() {
+        cmb_id_cou.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmb_id_curItemStateChanged(evt);
+                cmb_id_couItemStateChanged(evt);
             }
         });
-        cmb_id_cur.addActionListener(new java.awt.event.ActionListener() {
+        cmb_id_cou.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_id_curActionPerformed(evt);
+                cmb_id_couActionPerformed(evt);
             }
         });
-        jPanel2.add(cmb_id_cur, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 169, 28));
+        jPanel2.add(cmb_id_cou, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 140, 28));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setText("ID Curso");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 112, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 136, 321, 268));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 300, 200));
 
         jPanel3.setBackground(new java.awt.Color(237, 234, 234));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
@@ -194,20 +194,42 @@ public class activity extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));
         jLabel5.setText("Cant. Act");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 108, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         lbl_qua_act.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
-        jPanel3.add(lbl_qua_act, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 108, 73, 28));
+        jPanel3.add(lbl_qua_act, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 73, 28));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 153));
         jLabel8.setText("Suma %");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 198, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         lbl_sum_per.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
-        jPanel3.add(lbl_sum_per, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 198, 73, 28));
+        jPanel3.add(lbl_sum_per, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 40, 28));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 136, 298, 268));
+        lbl_sym.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
+        lbl_sym.setText("%");
+        jPanel3.add(lbl_sym, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 136, 298, 200));
+
+        lbl_fil.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 18)); // NOI18N
+        lbl_fil.setForeground(new java.awt.Color(0, 102, 153));
+        lbl_fil.setText("Filtrar");
+        getContentPane().add(lbl_fil, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 70, 30));
+
+        txt_fil.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 18)); // NOI18N
+        txt_fil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_filActionPerformed(evt);
+            }
+        });
+        txt_fil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txt_fil, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 230, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,69 +259,106 @@ public void id() {
 
     }
 
-    public void cargarLogros() {
+    public void loadAchievements() {
         try {
             ResultSet rs = cone.consultar("SELECT ID_ACHIEVEMENT FROM ACHIEVEMENT");
             while (rs.next()) {
-                cmb_id_arc.addItem(rs.getString("ID_ACHIEVEMENT"));
+                cmb_id_ach.addItem(rs.getString("ID_ACHIEVEMENT"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void cargarCursos() {
+    public void loadCourses() {
         try {
             ResultSet rs = cone.consultar("SELECT ID_COURSES FROM COURSES");
             while (rs.next()) {
-                cmb_id_cur.addItem(rs.getString("ID_COURSES"));
+                cmb_id_cou.addItem(rs.getString("ID_COURSES"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+public void consult(String valor) {
 
+        try {
+            String titulos[] = {"ID_ACTIVITY", "DESCRIPTION", "PORCENTAGE", "ID_COURSES", "ID_ACHIEVEMENT"};
+            modelo = new DefaultTableModel(null, titulos);
+            String fila[] = new String[5];
+            ResultSet rs = cone.consultar("SELECT * FROM activities WHERE CONCAT (ID_ACTIVITIES,' ',ID_COURSES,' ',ID_ACHIEVEMENT,' ')LIKE'%" + valor + "%'");
+            while (rs.next()) {
+                fila[0] = rs.getString("ID_ACTIVITIES");
+                fila[1] = rs.getString("DESCRIPTION");
+                fila[2] = rs.getString("PORCENTAGE");
+                fila[3] = rs.getString("ID_COURSES");
+                fila[4] = rs.getString("ID_ACHIEVEMENT");
+                modelo.addRow(fila);
+                tbl_act.setModel(modelo);
+            }
+            id();
+            nameTeacher();
+            loadAchievements();
+            loadCourses();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         try {
             // TODO add your handling code here:
             int suma = 0;
-            ResultSet rs = cone.consultar("SELECT sum(PORCENTAJE) as porcentaje FROM activities WHERE ID_ACHIEVEMENT = "+cmb_id_arc.getSelectedItem()+" "
-                    + "and ID_COURSES = "+cmb_id_cur.getSelectedItem());
+            String idActivity = lbl_id_act.getText();
+            String idCourses = cmb_id_cou.getSelectedItem() + "";
+            String idAchiviement = cmb_id_ach.getSelectedItem() + "";
+            String txtDesc = txt_des.getText();
+            String porcentage = txt_por.getText();
+
+            ResultSet rs = cone.consultar("SELECT sum(PORCENTAGE) as porcentaje FROM activities WHERE ID_ACHIEVEMENT = " + cmb_id_ach.getSelectedItem() + " "
+                    + "and ID_COURSES = " + cmb_id_cou.getSelectedItem());
             if (rs.next()) {
                 suma = rs.getInt("porcentaje");
             }
-            int porcentaje = Integer.parseInt(txt_por.getText()) + suma;
-            if (porcentaje > 100) {
-                JOptionPane.showMessageDialog(rootPane, "se pasa de 100%");
-            }else{
-            cone.modificar("INSERT INTO activities VALUES()");
+            int porcentaje = 0;
+            if (txt_por.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Error: No se ingreso el porcentaje");
+            } else {
+                porcentaje = Integer.parseInt(txt_por.getText());
+                if ((porcentaje + suma) > 100) {
+                    JOptionPane.showMessageDialog(rootPane, "Error: La suma de los porcentajes es mayor a 100%");
+                } else {
+                    cone.modificar("INSERT INTO activities VALUES(" + idActivity + ", '" + txtDesc + "'," + porcentage + "," + idCourses + "," + idAchiviement + ")");
+                    consult("");
+                }
             }
+            id();
         } catch (SQLException ex) {
             Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_addActionPerformed
 
-    private void cmb_id_arcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_id_arcActionPerformed
+    private void cmb_id_achActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_id_achActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_id_arcActionPerformed
+    }//GEN-LAST:event_cmb_id_achActionPerformed
 
-    private void cmb_id_curActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_id_curActionPerformed
+    private void cmb_id_couActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_id_couActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_id_curActionPerformed
+    }//GEN-LAST:event_cmb_id_couActionPerformed
 
     private void txt_porActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_porActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_porActionPerformed
 
-    private void cmb_id_arcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_id_arcItemStateChanged
+    private void cmb_id_achItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_id_achItemStateChanged
         // TODO add your handling code here:
         cone2 = new conexion();
 
         try {
             ResultSet rs;
-            rs = cone2.consultar("SELECT count(ID_ACTIVITIES) as cantidad, sum(PORCENTAGE) as suma FROM activities WHERE ID_ACHIEVEMENT = " +cmb_id_arc.getSelectedItem()+" "
-                    + "and ID_COURSES = "+cmb_id_cur.getSelectedItem());
+            rs = cone2.consultar("SELECT count(ID_ACTIVITIES) as cantidad, sum(PORCENTAGE) as suma FROM activities WHERE ID_ACHIEVEMENT = " +cmb_id_ach.getSelectedItem()+" "
+                    + "and ID_COURSES = "+cmb_id_cou.getSelectedItem());
             if (rs.next()) {
                lbl_qua_act.setText(rs.getString("cantidad"));
                lbl_sum_per.setText(rs.getString("suma"));
@@ -309,15 +368,15 @@ public void id() {
             Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-    }//GEN-LAST:event_cmb_id_arcItemStateChanged
+    }//GEN-LAST:event_cmb_id_achItemStateChanged
 
-    private void cmb_id_curItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_id_curItemStateChanged
+    private void cmb_id_couItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_id_couItemStateChanged
        cone3 = new conexion();
         try {
             // TODO add your handling code here:
             ResultSet rs;
-            rs = cone3.consultar("SELECT count(ID_ACTIVITIES) as cantidad, sum(PORCENTAGE) as suma FROM activities WHERE ID_ACHIEVEMENT = " +cmb_id_arc.getSelectedItem()+" "
-                    + "and ID_COURSES = "+cmb_id_cur.getSelectedItem());
+            rs = cone3.consultar("SELECT count(ID_ACTIVITIES) as cantidad, sum(PORCENTAGE) as suma FROM activities WHERE ID_ACHIEVEMENT = " +cmb_id_ach.getSelectedItem()+" "
+                    + "and ID_COURSES = "+cmb_id_cou.getSelectedItem());
             if (rs.next()) {
                 lbl_qua_act.setText(rs.getString("cantidad"));
                 lbl_sum_per.setText(rs.getString("suma"));
@@ -326,13 +385,22 @@ public void id() {
             Logger.getLogger(activity.class.getName()).log(Level.SEVERE, null, ex);
         }
              
-    }//GEN-LAST:event_cmb_id_curItemStateChanged
+    }//GEN-LAST:event_cmb_id_couItemStateChanged
+
+    private void txt_filActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_filActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_filActionPerformed
+
+    private void txt_filKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filKeyReleased
+        // TODO add your handling code here:
+        consult(txt_fil.getText());
+    }//GEN-LAST:event_txt_filKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
-    private javax.swing.JComboBox<String> cmb_id_arc;
-    private javax.swing.JComboBox<String> cmb_id_cur;
+    private javax.swing.JComboBox<String> cmb_id_ach;
+    private javax.swing.JComboBox<String> cmb_id_cou;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -345,14 +413,17 @@ public void id() {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbl_fil;
     private javax.swing.JLabel lbl_id_act;
     private javax.swing.JLabel lbl_nam_tea;
     private javax.swing.JLabel lbl_qua_act;
     private javax.swing.JLabel lbl_sum_per;
+    private javax.swing.JLabel lbl_sym;
     private javax.swing.JLabel lbl_tea;
     private javax.swing.JLabel lbl_tit;
     private javax.swing.JTable tbl_act;
     private javax.swing.JTextArea txt_des;
+    private javax.swing.JTextField txt_fil;
     private javax.swing.JTextField txt_por;
     // End of variables declaration//GEN-END:variables
 }
